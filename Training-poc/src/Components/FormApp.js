@@ -31,30 +31,16 @@ const validationSchema = Yup.object({
        comments: Yup.string().required('Required!')
   })
 
- 
-    
-
   const onSubmit = (values ,event) => {
-
-    console.log('form data',values)
+    
+      console.log('form data',values)
+      
     alert('Your form submitted'+ values.fname)
 
   }
 function FormApp(){
     
-    /*const handlePhone = (values) => { 
-        values.acknowledge ?        
-            <div className='row'>
-                                        <div className='col-25'><label htmlFor='place'>Place:</label></div>
-                                        <div className='col-75'>
-                                          <Field type='text' id='place' name='place' />
-                                          <ErrorMessage name='place' component={TextError}/>
-                                         </div>
-                                    </div>  
-         : null
-    } **/
-   
-        return (
+          return (
             <Formik 
             initialValues={initialValues} 
              validationSchema={validationSchema}
