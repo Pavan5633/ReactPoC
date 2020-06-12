@@ -1,6 +1,6 @@
-import React from 'react'
+import React ,{useState} from 'react'
 import {Formik, Form, Field,ErrorMessage} from 'formik'
-
+import FormData from './FormData'
 import * as Yup from 'yup'
 import TextError from './TextError'
 
@@ -18,6 +18,9 @@ const initialValues= {
     place:''
 }
 
+
+
+
 const validationSchema = Yup.object({
     fname: Yup.string().required('Required!'),
     lname: Yup.string().required('Required!'),
@@ -31,20 +34,25 @@ const validationSchema = Yup.object({
        comments: Yup.string().required('Required!')
   })
 
-  const onSubmit = (values ,event) => {
+ 
     
-      console.log('form data',values)
-      
-    alert('Your form submitted'+ values.fname)
 
-  }
+ 
 function FormApp(){
     
-          return (
+    
+    const [formValues, setFormValues] = useState(initialValues)   
+    return (
+        <>
+            <FormData data={formValues}/>
             <Formik 
-            initialValues={initialValues} 
+            initialValues={formValues} 
              validationSchema={validationSchema}
-             onSubmit={onSubmit}
+             onSubmit={(values) => {
+                setFormValues(values);
+                
+                              }}
+      
 
                   >
                        {
@@ -156,7 +164,10 @@ function FormApp(){
                                      </div>
                                 </div>       )}
                         
-                         <Field type="submit" id="submit" value="Submit" />
+                         <Field type="submit" id="submit" value="Submit" 
+                         
+                          />
+                       
                 </Form>
             </div>
             </div>
@@ -166,6 +177,7 @@ function FormApp(){
                 }
             
             </Formik>
+            </>
         )
     }
 
