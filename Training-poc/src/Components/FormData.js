@@ -3,7 +3,7 @@ import React from 'react'
 function FormData(props) {
     return (
         <div>
-            {props.children}
+           <p>Hi {props.data.fname} !</p> 
         </div>
     )
 }
