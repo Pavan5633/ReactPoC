@@ -15,7 +15,8 @@ const initialValues= {
     skills:'react',
     comments:'',
     acknowledge: false,
-    place:''
+    place:'',
+    
 }
 
 
@@ -30,8 +31,8 @@ const validationSchema = Yup.object({
     phone: Yup.number().required('Required!'),
     email: Yup.string()
       .email('Invalid email format!')
-      .required('Required!'),
-       comments: Yup.string().required('Required!')
+      .required('Required!')
+      
   })
 
  
@@ -40,28 +41,32 @@ const validationSchema = Yup.object({
  
 function FormApp(){
     
-    
+    const [btnshow,setBtnShow]= useState(false)
     const [formValues, setFormValues] = useState(initialValues)   
     return (
+       
         <>
-            <FormData data={formValues}/>
+            
+            <FormData data={formValues} show={btnshow}/>
             <Formik 
             initialValues={formValues} 
              validationSchema={validationSchema}
              onSubmit={(values) => {
-                setFormValues(values);
-                
-                              }}
-      
-
+                 return(
+                     <>
+               { setFormValues(values)}
+                 { setBtnShow(true)}
+               {console.log('formdata',values)}
+            </>)}} 
                   >
                        {
                     formik =>{
                         return (
+                            !btnshow ?
                             <div>
-                <h2>Application Form</h2>
-            <div className='container'>
-               
+                
+            <div className='formcontainer'>
+            <h2>Application Form</h2>
                 <Form>
                         <div className='row'>
                             <div className='col-25'><label htmlFor='fname'>First name:</label></div>
@@ -80,7 +85,7 @@ function FormApp(){
                          <div  className='row'>
                             <div  className='col-25 '><label htmlFor="gender">Gender: </label></div>
                             <div className='col-75'>
-                                 <Field type="radio" id="male" name="gender"  value='male'/>
+                                 <Field type="radio" id="male" name="gender"  value='male' />
                                  <label htmlFor="male">Male</label>
                                  <Field type="radio" id="female" name="gender" value='female' />
                                  <label htmlFor="female">Female</label>
@@ -90,7 +95,7 @@ function FormApp(){
                          <div className='row'>
                              <div className='col-25'><label htmlFor="maritalstatus">Status:</label></div>
                              <div className='col-75'>
-                                <Field type="checkbox" id="married" name="maritalstatus" value="married" />
+                                <Field type="checkbox" id="married" name="maritalstatus" value="married"  />
                                 <label htmlFor="married"> Married</label>
                                 <Field type="checkbox" id="unmarried" name="maritalstatus" value="unmarried" />
                                 <label htmlFor="unmarried"> Unmarried</label>
@@ -149,7 +154,7 @@ function FormApp(){
                             </div>
                         </div>
                         <div className='row'>
-                             <div className='col-75'>
+                             <div >
                                 <Field type="checkbox" id="acknowledge" name="acknowledge"  
                                 />
                                 <label htmlFor="acknowledge"> I Acknowledge the terms and conditions</label>
@@ -171,14 +176,14 @@ function FormApp(){
                 </Form>
             </div>
             </div>
-
+                                 : null
                         )
                     }
-                }
+                } 
             
             </Formik>
-            </>
-        )
+            </> 
+         )
     }
 
 export default FormApp

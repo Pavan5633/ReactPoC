@@ -6,14 +6,44 @@
 * {
   box-sizing: border-box;
 }
-
-
-.container {
-  width: 500px;
-  border-radius: 5px;
-  height: 90%;
+.homecontainer {
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  margin-top: 50px;
   background-color: #f2f2f2;
-  padding: 20px;
+  padding: 10px  ;
+}
+.datacontainer {
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  margin-top: 50px;
+  background-color: #f2f2f2;
+  }
+
+.formcontainer {
+  width: 450px;
+  border-radius: 10px;
+  height: 100%;
+  margin-top: 20px;
+  background-color: #f2f2f2;
+  padding: 10px  ;
+}
+.Toolbar {
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #3c5dec;
+  display: flex;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 90;
 }
 
 .row:after {
@@ -38,6 +68,16 @@ label {
   display: inline-block;
 }
 
+.logoff
+{
+  background-color: #ace6ae;
+  color: rgb(34, 36, 33);
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  float: center;
+}
 input[type=submit] {
   background-color: #4CAF50;
   color: white;
@@ -69,6 +109,5 @@ input[type='tel'],
 
  
 h2{
-
   text-align: center;
 }
