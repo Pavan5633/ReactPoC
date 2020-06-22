@@ -15,7 +15,7 @@ const initialValues= {
     skills:'react',
     comments:'',
     acknowledge: false,
-    place:'',
+    place:''
     
 }
 

@@ -106,8 +106,15 @@ input[type='tel'],
 .error {
   color: red;
 }
-
- 
 h2{
   text-align: center;
+}
+ 
+h3{
+  text-align: center;
+}
+
+td ,th{
+  border: 1px solid #ccc;
+  text-align: center
 }
