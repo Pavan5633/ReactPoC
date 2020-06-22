@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+
 @RestController
 public class UserResource {
 
@@ -36,10 +37,6 @@ public class UserResource {
         return user.get();
     }
 
-    @DeleteMapping("/users/{id}")
-    public void deleteUser(@PathVariable long id) {
-        userRepository.deleteById(id);
-    }
 
     @PostMapping("/users")
     public ResponseEntity<Object> createUser(@RequestBody User user) {
@@ -52,18 +49,5 @@ public class UserResource {
 
     }
 
-    @PutMapping("/users/{id}")
-    public ResponseEntity<Object> updateUser(@RequestBody User user, @PathVariable long id) {
 
-        Optional<User> userOptional = userRepository.findById(id);
-
-        if (!userOptional.isPresent())
-            return ResponseEntity.notFound().build();
-
-        user.setId(id);
-
-        userRepository.save(user);
-
-        return ResponseEntity.noContent().build();
-    }
 }

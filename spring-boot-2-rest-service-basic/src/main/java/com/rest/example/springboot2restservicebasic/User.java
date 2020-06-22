@@ -1,11 +1,15 @@
 package com.rest.example.springboot2restservicebasic;
 
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+
 @Entity
 public class User {
+
+
     @Id
     @GeneratedValue
     private Long id;
@@ -30,12 +34,15 @@ public class User {
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -70,5 +77,35 @@ public class User {
 
     public void setPlace(String place) {
         this.place = place;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return getId().equals(user.getId()) &&
+                Objects.equals(getName(), user.getName()) &&
+                Objects.equals(getMail(), user.getMail()) &&
+                Objects.equals(getPhone(), user.getPhone()) &&
+                Objects.equals(getSkill(), user.getSkill()) &&
+                Objects.equals(getPlace(), user.getPlace());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getMail(), getPhone(), getSkill(), getPlace());
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", mail='" + mail + '\'' +
+                ", phone='" + phone + '\'' +
+                ", skill='" + skill + '\'' +
+                ", place='" + place + '\'' +
+                '}';
     }
 }
