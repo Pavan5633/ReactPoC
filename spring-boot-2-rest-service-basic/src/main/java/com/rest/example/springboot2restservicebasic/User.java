@@ -22,9 +22,9 @@ public class User {
         super();
     }
 
-    public User(Long id, String name, String mail, String phone, String skill, String place) {
+    public User( String name, String mail, String phone, String skill, String place) {
         super();
-        this.id = id;
+
         this.name = name;
         this.mail = mail;
         this.phone = phone;

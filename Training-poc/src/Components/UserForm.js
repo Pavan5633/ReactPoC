@@ -1,6 +1,6 @@
 import React ,{useState } from 'react'
 import {Formik, Form, Field,ErrorMessage} from 'formik'
-import FormData from './FormData'
+
 import * as Yup from 'yup'
 import TextError from './TextError'
 import axios from '../service/UserService'
@@ -18,11 +18,12 @@ const validationSchema = Yup.object({
     phone: Yup.number().required('Required!'),
     mail: Yup.string()
       .email('Invalid email format!')
-      .required('Required!')
+      .required('Required!'),
+    place:Yup.string().required('Required!')
       
   })
 
-function NewFormApp(){
+function UserForm(){
     
     const [btnshow,setBtnShow]= useState(false)
     const [formValues, setFormValues] = useState(initialValues)  
@@ -53,7 +54,7 @@ function NewFormApp(){
                    console.log(err)
               })
               }  
-              {<FormData show={btnshow}/>}
+              {window.location = "/UsersData"}
               </>  )}
 
     return (
@@ -74,7 +75,7 @@ function NewFormApp(){
                             <div>
                 
             <div className='formcontainer'>
-            <h2>Application Form</h2>
+            <h2>React Application Form</h2>
                 <Form>
                         <div className='row'>
                             <div className='col-25'><label htmlFor='name'>Username:</label></div>
@@ -108,7 +109,7 @@ function NewFormApp(){
                                 <label htmlFor="skill">Skills:</label>
                             </div>
                             <div className='col-75'>
-                                <Field as='select' id="skill" name="skill" >
+                                <Field as='select' id="skill" name="skill"  >
                                     <option value="react" defaultValue>React</option>
                                     <option value=".net">.Net</option>
                                     <option value="javascript">JavaScript</option>
@@ -124,8 +125,7 @@ function NewFormApp(){
                              </div>
                         </div>       
                         
-                        <Field type="button" id="load data" value="load data" 
-                        />
+                        
                          <Field type="submit" id="submit" value="Submit" />
                        
                 </Form>
@@ -141,4 +141,4 @@ function NewFormApp(){
          )
     }
 
-export default NewFormApp
+export default UserForm

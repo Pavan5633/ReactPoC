@@ -15,8 +15,8 @@ class LoadDatabase {
     CommandLineRunner initDatabase(UserRepository userRepository) {
 
         return args -> {
-            log.info("Preloading " + userRepository.save(new User((long) 10001,"pavan","pavan@email.com","9010546765","react","hyd")));
-            log.info("Preloading " + userRepository.save(new User((long) 10002,"ravi","ravi@email.com","9010546767","react","sec")));
+            log.info("Preloading " + userRepository.save(new User("pavan","pavan@email.com","9010546765","react","hyd")));
+            log.info("Preloading " + userRepository.save(new User("ravi","ravi@email.com","9010546767","react","sec")));
         };
     }
 }

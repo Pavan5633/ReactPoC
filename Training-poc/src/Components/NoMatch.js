@@ -1,7 +1,7 @@
 import React from 'react';
 
 const noMatch = () => (
-    <h1 style={{textAlign: 'center'}}>Page not found</h1>
+    <h1 className='formcontainer' style={{marginTop:'30%'}}>Data Loading...</h1>
 );
 
 export default noMatch;
